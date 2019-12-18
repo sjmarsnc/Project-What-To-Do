@@ -1,0 +1,22 @@
+#banner {
+    height: 10rem;  
+}
+
+#skyline {
+    background-image: url("../images/raleighskyline_banner.jpg");
+    font-size: xx-large;
+    font-weight: bold; 
+    color: black; 
+    vertical-align: center;
+    text-align: center;
+    height: 100%;
+}
+
+#weather {
+    height: 100%; 
+    vertical-align: center; 
+}
+
+img {
+    image-orientation: from-image;
+}
