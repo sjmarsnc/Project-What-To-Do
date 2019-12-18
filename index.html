@@ -1,53 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>First Project</title>
-</head>
-<body>
-    <div class="navbar-fixed" style="background-image: url('https://preview.redd.it/zembn9uxl7441.jpg?width=1024&auto=webp&s=00fd784437d7443b9fc2ae3608ae8237089159d1');"></div>
-        <nav>
-            <div class="col s12 m7" class="nav-wrapper" style="background-image: url('https://preview.redd.it/zembn9uxl7441.jpg?width=1024&auto=webp&s=00fd784437d7443b9fc2ae3608ae8237089159d1');"></div>
-            <div class="col s12 m7">
-                <div class="city"></div>
-                <div class="wind"></div>
-                <div class="humidity"></div>
-                <div class="temp"></div>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="./assets/css/materialize.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="./assets/css/style.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+       <div class="row" id="banner">
+           <div class = "col s8" id = "skyline">What To Do Outdoors in Raleigh</div>
+           <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
+           <div id="weather" class="blue accent-2 white-text col s4">
+               <div>
+                   <span id="temperature">Temperature: 65 &#8457;</span>
+                   <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
+               </div>
+           </div>
+
+       </div>
+
+       <div class="row"> 
+           <div class = "col s6">
+               <form>
+                   <h5>What days will you be in town?</h5>
+                   <label>Starting date:</label><input type="date" class="datepicker">
+                   <label>Ending date:</label>&nbsp;<input type="date" class="datepicker">
+               </form>
+           </div>
+       </div>
+
+       <div class="row">
+           <div class="col s6 m4">
+               <div class="card">
+                   <div class="card-image">
+                       <img class="responsive-image" src="./assets/images/greenway_small.jpg">
+                       <span class="card-title white-text">Cycling</span>
+                   </div>
+               </div>
+
+           </div>
+       </div>
+
+       <div class="row">
+        <div class="col s6 m4">
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-image" src="./assets/images/greenway_small.jpg">
+                    <span class="card-title white-text">Cycling</span>
+                </div>
             </div>
-        </nav>
+
+        </div>
     </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-          var APIKey = "92ce17e1323ad237fdf4a085b335d5bf";
-      
-          var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Raleigh&units=imperial&appid=" + APIKey;
-      
-          $.ajax({
-            url: queryURL,
-            method: "GET"
-          })
-            
-            .then(function(response) {
-      
-              console.log(queryURL);
-      
-              console.log(response);
-      
-              $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-              $(".wind").text("Wind Speed: " + response.wind.speed + " mph");
-              $(".humidity").text("Humidity: " + response.main.humidity + "%");
-              $(".temp").text("Temperature: " + response.main.temp + "F");
-      
-              var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-              $(".tempF").text("Temperature (Kelvin) " + tempF);
-      
-              
-              console.log("Wind Speed: " + response.wind.speed);
-              console.log("Humidity: " + response.main.humidity);
-              console.log("Temperature (F): " + response.main.temp);
-            });
-        </script>
-</body>
-</html>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="./assets/js/materialize.js"></script>
+      <script type="text/javascript" src="./assets/js/whattodo.js"></script>
+
+    </body>
+  </html>
+        
