@@ -1,0 +1,76 @@
+
+
+ #trail-dump, #camp-dump, #bike-dump {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    
+ }
+
+ #trailDiv, #campDiv, #bikeDiv {
+     margin: 5px;
+     border-radius: 5px;
+     padding: 10px;
+     text-align: center;
+     width: 300px;
+     background-color: rgba(55, 190, 172, 0.87)
+ }
+
+ a {
+     text-decoration: none;
+     color: rgb(255, 255, 255);
+     font-weight: bolder;
+    
+ }
+
+ .campForm, .hikingForm, .bikeForm {
+     text-align: center;
+     background-color: rgba(58, 65, 58, 0.3);
+     height: 330px;
+    
+     border-radius: 10px;
+     
+ }
+
+ .formHikingContainer {
+    padding: 100px 50px 200px 50px;
+    width: 100%;
+   background-image: url("../images/accomplishment-action-adult-adventure-372098.jpg");
+   background-position: center;
+ }
+
+ .formCampContainer {
+     padding: 100px 50px 200px 50px;
+     width: 100%;
+    background-image: url("../images/activity-adult-adventure-backpacking-344100.jpg");
+    background-position: center;
+ }
+
+ .formBikeContainer {
+    padding: 100px 50px 200px 50px;
+    width: 100%;
+   background-image: url("../images/silhouette-photography-of-biker-on-top-of-hill-1619299.jpg");
+   background-position: center;
+ }
+
+ #cityLabel {
+     color: white;
+ }
+
+ .location {
+     font-weight: bolder;
+ }
+div p img {
+    max-width: 250px;
+}
+
+
+
+
+
+ 
+    
+ 
+    
+ 
