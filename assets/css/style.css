@@ -20,3 +20,12 @@
 img {
     image-orientation: from-image;
 }
+
+#weatherToggle{
+    height: 100%; 
+    vertical-align: center; 
+}
+
+label {
+    color: white !important; 
+}
