@@ -128,7 +128,8 @@ $.ajax({
 
     for(var j = 0; j < response.trails.length; j++) {
 
-var bike = $("<div id='bikeDiv'>")
+var bike = $("<div id='bikeDiv' data-id='" + response.trails[j].id + "' data-url='" + 
+                 response.trails[j].url + "'>");
 var bikeName = response.trails[j].name;
 var bikeHeading = $("<h4>").text(bikeName);
 bike.append(bikeHeading);
