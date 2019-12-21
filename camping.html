@@ -136,8 +136,9 @@ $.ajax({
     for(var j = 0; j < response.campgrounds.length; j++) {
 
 
+var camp = $("<div id='campDiv' data-id='" + response.campgrounds[j].id + "' data-url='" + 
+                 response.campgrounds[j].url + "'>");
 
-var camp = $("<div id='campDiv'>")
 var campName = response.campgrounds[j].name;
 var campHeading = $("<h4>").text(campName);
 camp.append(campHeading);
