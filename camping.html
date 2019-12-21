@@ -135,6 +135,8 @@ $.ajax({
 
     for(var j = 0; j < response.campgrounds.length; j++) {
 
+
+
 var camp = $("<div id='campDiv'>")
 var campName = response.campgrounds[j].name;
 var campHeading = $("<h4>").text(campName);
@@ -149,13 +151,16 @@ camp.append(hikingSummaryP);
 
 
  var campLink = response.campgrounds[j].url;
- var campLinkP = $("<a href=" + campLink + "> click here to see more!</a>")
- camp.append(campLinkP);
+ var campLinkP = $("<a id='divLink' target='_blank' href=" + campLink + ">").append(camp);
+ 
+
+
+
 
 //  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
 //  camp.append(addFav);
 
- $("#camp-dump").append(camp);
+ $("#camp-dump").append(campLinkP);
  $(".cityInput").val("");
     }
 

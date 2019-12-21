@@ -170,16 +170,16 @@ var hikingSummaryP = $("<p>").text(hikingSummary);
 trail.append(hikingSummaryP);
 
  var hikingLink = response.trails[j].url;
- var hikingLinkP = $("<a target='_blank' href=" + hikingLink + "> click here to see more!</a>")
- trail.append(hikingLinkP);
+ var hikingLinkP = $("<a id='divLink' target='_blank' href=" + hikingLink + ">").append(trail);
 
- favoriteAdd = $("<div class='switch'><br><label class='white-text'>Favorite<input type='checkbox'><span class='lever'></span></label></div>");
- trail.append(favoriteAdd);
+
+//  favoriteAdd = $("<div class='switch'><br><label class='white-text'>Favorite<input type='checkbox'><span class='lever'></span></label></div>");
+//  trail.append(favoriteAdd);
 
 //  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
 //  trail.append(addFav);
 
- $("#trail-dump").append(trail);
+ $("#trail-dump").append(hikingLinkP);
  $(".cityInput").val("");
     }
 

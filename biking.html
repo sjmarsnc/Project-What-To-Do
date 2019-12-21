@@ -15,9 +15,11 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
       <link href="./assets/css/activity.css" rel="stylesheet">
+
       <link rel="stylesheet" href="./assets/css/style.css">
      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     
 </head>
 <body>
   <div class="row hide-on-med-and-down" id="banner">
@@ -60,6 +62,7 @@
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
               </ul>
+
             </div>
           </nav>
               
@@ -70,6 +73,7 @@
       <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
 
+
     <div class="container formBikeContainer">
         <div class="row">
                 <form class="col s12">
@@ -77,8 +81,8 @@
                       
                     <div class="input-field col s8 offset-s2 bikeForm">
                        
-                      <input id="input_text" class="cityInput white-text" type="text" >
-                      <label for="input_text" class="white-text">City</label>
+                      <input id="input_text" class="cityInput white-text" type="text">
+                      <label for="input_text" class="white-text">Enter a City Name Here</label>
                       <form action="#">
                             <p class="range-field">
                                 <label for="mileRange" class="white-text">Mile Radius</label>
@@ -121,6 +125,10 @@ function displayBikingInfo() {
 
 var city = $(".cityInput").val().trim();
 
+if (city === '') {
+  alert("type in a city");
+}
+
 var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
@@ -150,10 +158,12 @@ $.ajax({
 
     for(var j = 0; j < response.trails.length; j++) {
 
+
 var bike = $("<div id='bikeDiv'>")
 var bikeName = response.trails[j].name;
 var bikeHeading = $("<h4>").text(bikeName);
 bike.append(bikeHeading);
+
 
 var bikingImg = $("<p><img src=" + response.trails[j].imgSmall + "></p>");
 bike.append(bikingImg);
@@ -162,19 +172,19 @@ bike.append(bikingImg);
 var bikeLocation = $("<p class='location'>").text(response.trails[j].location);
 bike.append(bikeLocation);
 
-var hikingSummary = response.trails[j].summary;
-var hikingSummaryP = $("<p>").text(hikingSummary);
-bike.append(hikingSummaryP);
+var bikingSummary = response.trails[j].summary;
+var bikingSummaryP = $("<p>").text(bikingSummary);
+bike.append(bikingSummaryP);
 
 
  var bikeLink = response.trails[j].url;
- var bikeLinkP = $("<a href=" + bikeLink + "> click here to see more!</a>")
- bike.append(bikeLinkP);
+ var bikeLinkP = $("<a id='divLink' target='_blank' href=" + bikeLink + ">").append(bike);
+
 
 //  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
 //  bike.append(addFav);
 
- $("#bike-dump").append(bike);
+ $("#bike-dump").append(bikeLinkP);
  $(".cityInput").val("");
     }
 
