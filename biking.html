@@ -15,38 +15,64 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
       <link href="./assets/css/activity.css" rel="stylesheet">
+
       <link rel="stylesheet" href="./assets/css/style.css">
+     <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      
 </head>
 <body>
-        <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">three</a></li>
+  <div class="row hide-on-med-and-down" id="banner">
+    <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
+    <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
+    <div id="weather" class="accent-2 white-text col s8 m3">
+        <div>
+
+            <span id="temperature">Temperature</span>
+            <br>
+            <span id="wind">Wind Speed</span>
+            <br>
+            <span id="humidity">Humidity</span>
+            <br>
+            <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
+        </div>
+    </div>
+    <div id="weatherToggle" class="accent-2 white-text col s4 m1">
+        <label>Change Your Units!</label>
+        <div class="switch"><label>Metric<input type="checkbox" checked>
+                <span class="lever"></span>Imperial</label></div>
+    </div>
+  </div>
+    <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>
+          </ul>
+          <nav>
+            <div class="nav-wrapper white lighten-1">
+              &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons" style="color: black;">menu</i>
+            </a>
+              <ul class="right hide-on-med-and-down">
+                <li><a class="black-text" href="./camping.html">Camping</a></li>
+                <li class="active"><a class="black-text" href="./biking.html">Biking</a></li>
+                <li><a class="black-text" href="./hiking.html">Hiking</a></li> 
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
               </ul>
-              <nav>
-                <div class="nav-wrapper white lighten-1">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
-                  <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                    <i class="material-icons" style="color: black;">menu</i>
-               </a>
-                  <ul class="right hide-on-med-and-down">
-                    <li><a class="black-text" href="./camping.html">Camping</a></li>
-                    <li class="active"><a class="black-text" href="./biking.html">Biking</a></li>
-                    <li><a class="black-text" href="./hiking.html">Hiking</a></li> 
-                    <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
-                  </ul>
-                </div>
-              </nav>
+
+            </div>
+          </nav>
               
     <ul class="sidenav" id="mobile-demo">
       <li><a class="black-text" href="./camping.html">Camping</a></li>
-      <li><a class="black-text" href="./biking.html">Biking</a></li>
-      <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
+      <li><a class="black-text" href="./hiking.html">Hiking</a></li>
+      <li class="active"><a class="black-text" href="./biking.html">Biking</a></li>  
       <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
+
 
     <div class="container formBikeContainer">
         <div class="row">
@@ -55,8 +81,8 @@
                       
                     <div class="input-field col s8 offset-s2 bikeForm">
                        
-                      <input id="input_text" class="cityInput white-text" type="text" >
-                      <label for="input_text" class="white-text">City</label>
+                      <input id="input_text" class="cityInput white-text" type="text">
+                      <label for="input_text" class="white-text">Enter a City Name Here</label>
                       <form action="#">
                             <p class="range-field">
                                 <label for="mileRange" class="white-text">Mile Radius</label>
@@ -99,6 +125,10 @@ function displayBikingInfo() {
 
 var city = $(".cityInput").val().trim();
 
+if (city === '') {
+  alert("type in a city");
+}
+
 var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
@@ -128,11 +158,14 @@ $.ajax({
 
     for(var j = 0; j < response.trails.length; j++) {
 
+
 var bike = $("<div id='bikeDiv' data-id='" + response.trails[j].id + "' data-url='" + 
                  response.trails[j].url + "'>");
+
 var bikeName = response.trails[j].name;
 var bikeHeading = $("<h4>").text(bikeName);
 bike.append(bikeHeading);
+
 
 var bikingImg = $("<p><img src=" + response.trails[j].imgSmall + "></p>");
 bike.append(bikingImg);
@@ -141,19 +174,19 @@ bike.append(bikingImg);
 var bikeLocation = $("<p class='location'>").text(response.trails[j].location);
 bike.append(bikeLocation);
 
-var hikingSummary = response.trails[j].summary;
-var hikingSummaryP = $("<p>").text(hikingSummary);
-bike.append(hikingSummaryP);
+var bikingSummary = response.trails[j].summary;
+var bikingSummaryP = $("<p>").text(bikingSummary);
+bike.append(bikingSummaryP);
 
 
  var bikeLink = response.trails[j].url;
- var bikeLinkP = $("<a href=" + bikeLink + "> click here to see more!</a>")
- bike.append(bikeLinkP);
+ var bikeLinkP = $("<a id='divLink' target='_blank' href=" + bikeLink + ">").append(bike);
+
 
 //  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
 //  bike.append(addFav);
 
- $("#bike-dump").append(bike);
+ $("#bike-dump").append(bikeLinkP);
  $(".cityInput").val("");
     }
 
@@ -169,6 +202,9 @@ $("#bikeSubmit").on("click", function(event) {
 
 $( document ).ready(function() {$(".dropdown-trigger").dropdown()});     
         </script>
-     <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/materialize.js"></script>
+    <script type="text/javascript" src="./assets/js/whattodo.js"></script>
 </body>
 </html>
