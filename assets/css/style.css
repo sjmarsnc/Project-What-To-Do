@@ -15,6 +15,11 @@
 #weather {
     height: 100%; 
     vertical-align: center; 
+    background-color: cornflowerblue;
+}
+
+#weatherToggle {
+    background-color: cornflowerblue;
 }
 
 img {
