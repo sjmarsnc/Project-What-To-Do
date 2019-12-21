@@ -15,6 +15,7 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
       <link href="./assets/css/activity.css" rel="stylesheet">
+      <link rel="stylesheet" href="./assets/css/activity.css">
      
 </head>
 <body>
@@ -27,16 +28,26 @@
     </ul>
     <nav>
       <div class="nav-wrapper white lighten-1">
-        <a href="#" class="brand-logo black-text">Home</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+             <i class="material-icons" style="color: black;">menu</i>
+        </a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="black-text" href="camping.html">Camping</a></li>
-          <li><a class="black-text" href="biking.html">Biking</a></li>
-          <li><a class="black-text" href="hiking.html">Hiking</a></li> 
+          <li><a class="black-text" href="./camping.html">Camping</a></li>
+          <li><a class="black-text" href="./biking.html">Biking</a></li>
+          <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li> 
           <!-- Dropdown Trigger -->
           <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a class="black-text" href="./camping.html">Camping</a></li>
+      <li><a class="black-text" href="./biking.html">Biking</a></li>
+      <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
+      <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
+    </ul>
    
   <div class="container formHikingContainer">
         <div class="row">
@@ -83,6 +94,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
 
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+ 
 
 function displayHikingInfo() {
     $("#trail-dump").empty();
@@ -92,7 +107,7 @@ var city = $(".cityInput").val().trim();
 var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
- 
+
  // calling weather api to get lon and lat for hiking call
  $.ajax({
    url: queryURL,
