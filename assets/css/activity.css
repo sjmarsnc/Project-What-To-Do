@@ -8,7 +8,7 @@
     
  }
 
- #trailDiv, #campDiv, #bikeDiv {
+  #divLink {
      margin: 5px;
      border-radius: 5px;
      padding: 10px;
@@ -17,10 +17,14 @@
      background-color: rgba(55, 190, 172, 0.87)
  }
 
+ #divLink:hover {
+     border: solid black 1px;
+     background-color: rgba(55, 190, 172, 1)
+ }
+
  a {
      text-decoration: none;
-     color: rgb(255, 255, 255);
-     font-weight: bolder;
+    color: black;
     
  }
 
@@ -64,6 +68,16 @@
 div p img {
     max-width: 250px;
 }
+
+.hide {
+    display: none;
+}
+
+#divLink {
+   
+}
+
+
 
 
 
