@@ -183,7 +183,8 @@ $.ajax({
 
     for(var j = 0; j < response.trails.length; j++) {
 
-var trail = $("<div id='trailDiv'>")
+var trail = $("<div id='trailDiv' data-id='" + response.trails[j].id + "' data-url='" + 
+                 response.trails[j].url + "'>");
 var trailName = response.trails[j].name;
 var trailHeading = $("<h4>").text(trailName);
 trail.append(trailHeading);
