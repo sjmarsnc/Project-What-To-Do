@@ -39,7 +39,7 @@ function imperialUnit() {
 
      $("#wind").text("Wind Speed: " + response.wind.speed + " mph");
      $("#humidity").text("Humidity: " + response.main.humidity + "%");
-     $("#temperature").text("Temperature: " + response.main.temp + "F");
+     $("#temperature").text("Temperature: " + response.main.temp + "\xB0F");
      });
 }
 
@@ -57,6 +57,6 @@ function metricUnit() {
 
     $("#wind").text("Wind Speed: " + response.wind.speed + " m/s");
     $("#humidity").text("Humidity: " + response.main.humidity + "%");
-    $("#temperature").text("Temperature: " + response.main.temp + "C");
+    $("#temperature").text("Temperature: " + response.main.temp + "\xB0C");
     });
 }
