@@ -77,6 +77,16 @@
                   <div class="row valign-wrapper">
                       
                     <div class="input-field col s8 offset-s2 hikingForm">
+                      <!-- The Modal -->
+                      <div id="myModal" class="modal">
+
+                          <!-- Modal content -->
+                          <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Please enter a city name.</p>
+                          </div>
+                        
+                        </div>
                        
                       <input id="input_text" class="cityInput white-text" type="text" >
                       <label for="input_text" class="white-text">City</label>
@@ -125,6 +135,25 @@ function displayHikingInfo() {
     $("#trail-dump").empty();
 
 var city = $(".cityInput").val().trim();
+
+if (city === '') {
+  // Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+modal.style.display = "block";
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}
 
 var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
 
