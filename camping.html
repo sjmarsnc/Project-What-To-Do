@@ -16,10 +16,33 @@
       <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
       <link href="./assets/css/activity.css" rel="stylesheet">
       <link rel="stylesheet" href="./assets/css/style.css">
-     
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
 </head>
 <body>
-        <ul id="dropdown1" class="dropdown-content">
+  <div class="row hide-on-med-and-down" id="banner">
+      <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
+      <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
+      <div id="weather" class="accent-2 white-text col s8 m3">
+          <div>
+
+              <span id="temperature">Temperature</span>
+              <br>
+              <span id="wind">Wind Speed</span>
+              <br>
+              <span id="humidity">Humidity</span>
+              <br>
+              <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
+          </div>
+      </div>
+      <div id="weatherToggle" class="accent-2 white-text col s4 m1">
+          <label>Change Your Units!</label>
+          <div class="switch"><label>Metric<input type="checkbox" checked>
+                  <span class="lever"></span>Imperial</label></div>
+      </div>
+  </div>      
+  <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">one</a></li>
                 <li><a href="#!">two</a></li>
                 <li class="divider"></li>
@@ -42,9 +65,9 @@
               </nav>
              
     <ul class="sidenav" id="mobile-demo">
-      <li><a class="black-text" href="./camping.html">Camping</a></li>
+      <li><a class="black-text" href="./hiking.html">Hiking</a></li>
       <li><a class="black-text" href="./biking.html">Biking</a></li>
-      <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
+      <li class="active"><a class="black-text" href="./camping.html">Camping</a></li>  
       <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
 
@@ -153,6 +176,9 @@ $("#campSubmit").on("click", function(event) {
 
 $( document ).ready(function() {$(".dropdown-trigger").dropdown()});
         </script>
-     <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+     <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/materialize.js"></script>
+    <script type="text/javascript" src="./assets/js/whattodo.js"></script>
 </body>
 </html>
