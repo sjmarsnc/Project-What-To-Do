@@ -8,7 +8,7 @@
     
  }
 
- .trailDiv, #campDiv, #bikeDiv {
+ .cardDiv, #campDiv, #bikeDiv {
      margin: 5px;
      border-radius: 5px;
      padding: 10px;
