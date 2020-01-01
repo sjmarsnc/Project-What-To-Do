@@ -51,8 +51,8 @@
                               <input type="range" id="test5"  class="mileRange" min="0" max="200" />
                             </p>
                             <p class="range-field">
-                                <label for="bikeRange" class="white-text">Number of Search Results</label>
-                              <input type="range" id="test5" class="bikeRange"  min="0" max="500" />
+                                <label for="trailRange" class="white-text">Number of Search Results</label>
+                              <input type="range" id="test5" class="trailRange"  min="0" max="500" />
                             </p>
                             <p class="white-text"> Sort By: 
                                     <label>
@@ -66,7 +66,7 @@
                                     </label>
                                   </p>
                           </form>
-                          <a class="waves-effect waves-light btn-large" id="bikeSubmit">Search</a>
+                          <a class="waves-effect waves-light btn-large" id="searchSubmit">Search</a>
                           
                     </div>
                   </div>
@@ -74,12 +74,17 @@
         </div> 
     </div>
         <div class="row">
-            <div class="col s12" id="bike-dump">
-                     <!-- bike results get dumped here -->
+            <div class="col s12" id="result-dump">
+                     <!-- results get dumped here -->
             </div>
         </div>
+        <script>
+
+          var pageActivity = "biking";
+      
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
+        <!-- script type="text/javascript">
 
 
 function displayBikingInfo() {
@@ -155,7 +160,8 @@ $("#bikeSubmit").on("click", function(event) {
 });
 
 $( document ).ready(function() {$(".dropdown-trigger").dropdown()});     
-        </script>
+        </!-- script -->
      <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+     <script type="text/javascript" src="./assets/js/activity.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-
+var activity = pageActivity; 
 
 function displayResults() {
   $("#result-dump").empty();
@@ -17,21 +17,24 @@ function displayResults() {
     var lon = response.coord.lon;
     var maxResults = $(".trailRange").val();
     var maxDistance = $(".mileRange").val();
-    var qualityRadio = document.getElementById("qualityInput");
-    var qualityParm; 
-    // need to handle camping which doesn't have quality 
-    if (qualityRadio.checked) { qualityParm = 'quality'; }
-    else { qualityParm = 'distance';}
+    
+    if (activity !== 'camping') {
+      var qualityRadio = document.getElementById("qualityInput");
+      var qualityParm; 
+      // need to handle camping which doesn't have quality 
+      if (qualityRadio.checked) { qualityParm = 'quality'; }
+      else { qualityParm = 'distance';}
+    }
 
-    if (pageActivity === 'hiking') {
+    if (activity === 'hiking') {
        queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + 
              "&sort=" + qualityParm + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c";  
     }
-    else if (pageActivity === 'biking')  { 
+    else if (activity === 'biking')  { 
        queryURL = "https://www.mtbproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + 
             "&sort=" + qualityParm + "&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
     }
-    else if (pageActivity === 'camping') {
+    else if (activity === 'camping') {
        queryURL = "https://www.hikingproject.com/data/get-campgrounds?lat=" + lat + "&lon=" + lon + 
              "&sort=distance&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
     }
@@ -40,7 +43,13 @@ function displayResults() {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      buildResults(response.trails);
+      console.log(response);  
+      if (activity === 'camping') {
+        buildResults(response.campgrounds);
+      }
+      else {
+        buildResults(response.trails);
+      }
     });
 
   });
@@ -48,31 +57,38 @@ function displayResults() {
 
 function buildResults(resultsArray) {
 
+
   for (var j = 0; j < resultsArray.length; j++) {
 
-    var trail = $("<div class='trailDiv'>");
-    trail.attr("onclick", "cardClick('" + resultsArray[j].url + "')");
+    var result = $("<div class='trailDiv'>");
+    result.attr("onclick", "cardClick('" + resultsArray[j].url + "')");
 
-    // var trail = $("<div class='trailDiv' data-id='" + resultsArray[j].id +
+    // var result = $("<div class='trailDiv' data-id='" + resultsArray[j].id +
     //     "' data-url='" + resultsArray[j].url + "'>");
-    var trailName = resultsArray[j].name;
-    var trailHeading = $("<h4>").text(trailName);
-    trail.append(trailHeading);
+    var resultName = resultsArray[j].name;
+    var resultHeading = $("<h4>").text(resultName);
+    result.append(resultHeading);
 
-    var hikingImg = $("<p><img src=" + resultsArray[j].imgSmall + "></p>");
-    trail.append(hikingImg);
+    var resultImg; 
+    if (activity === 'camping') {
+      resultImg = $("<p><img src=" + resultsArray[j].imgUrl + "></p>");
+    } 
+    else {
+      resultImg = $("<p><img src=" + resultsArray[j].imgSmall + "></p>");
+    }
+    result.append(resultImg);
 
-    var hikingLocation = $("<p class='location'>").text(resultsArray[j].location);
-    trail.append(hikingLocation);
+    var resultLocation = $("<p class='location'>").text(resultsArray[j].location);
+    result.append(resultLocation);
 
-    var hikingSummary = resultsArray[j].summary;
-    var hikingSummaryP = $("<p>").text(hikingSummary);
-    trail.append(hikingSummaryP);
+    var resultSummary = resultsArray[j].summary;
+    var resultSummaryP = $("<p>").text(resultSummary);
+    result.append(resultSummaryP);
 
     var faveBtn = $("<i>").attr("class", " wave-effect waves-teal  faveBtn");
-    faveBtn.attr("onclick", "faveClick('" + resultsArray[j].id + "','hiking')");
+    faveBtn.attr("onclick", "faveClick('" + resultsArray[j].id + "','" + activity + "')");
     faveBtn.text("Fave!");
-    trail.append(faveBtn);
+    result.append(faveBtn);
 
     // var hikingLink = resultsArray[j].url;
     // var hikingLinkP = $("<a target='_blank' href=" + hikingLink + "> click here to see more!</a>")
@@ -84,7 +100,7 @@ function buildResults(resultsArray) {
     //  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
     //  trail.append(addFav);
 
-    $("#result-dump").append(trail);
+    $("#result-dump").append(result);
     $(".cityInput").val("");
   }
 
@@ -175,7 +191,7 @@ function getFaves(type) {
   // make call to API here?  
 }
 
-$("#hikingSubmit").on("click", function (event) {
+$("#searchSubmit").on("click", function (event) {
   event.preventDefault();
   displayResults();
 });

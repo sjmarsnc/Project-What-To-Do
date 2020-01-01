@@ -52,10 +52,10 @@
                             </p>
                             <p class="range-field">
                                 <label for="campRange" class="white-text">Number of Search Results</label>
-                              <input type="range" id="test5" class="campRange"  min="0" max="500" />
+                              <input type="range" id="test5" class="trailRange"  min="0" max="500" />
                             </p>
                           </form>
-                          <a class="waves-effect waves-light btn-large" id="campSubmit">Search</a>
+                          <a class="waves-effect waves-light btn-large" id="searchSubmit">Search</a>
                           
                     </div>
                   </div>
@@ -63,12 +63,12 @@
         </div> 
     </div>
         <div class="row">
-            <div class="col s12" id="camp-dump">
+            <div class="col s12" id="result-dump">
                      <!-- camp results get dumped here -->
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
 
 
 function displayCampingInfo() {
@@ -135,7 +135,13 @@ $("#campSubmit").on("click", function(event) {
 });
 
 $( document ).ready(function() {$(".dropdown-trigger").dropdown()});
-        </script>
+        </script> -->
      <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+     <script>
+
+      var pageActivity = "camping";
+  
+     </script>
+     <script type="text/javascript" src="./assets/js/activity.js"></script>
 </body>
 </html>
