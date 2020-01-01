@@ -1,6 +1,6 @@
 
 
- #trail-dump, #camp-dump, #bike-dump {
+ #trail-dump, #camp-dump, #bike-dump, #result-dump {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -8,7 +8,7 @@
     
  }
 
- #trailDiv, #campDiv, #bikeDiv {
+ .trailDiv, #campDiv, #bikeDiv {
      margin: 5px;
      border-radius: 5px;
      padding: 10px;
