@@ -1,3 +1,4 @@
+var projectAPIKey = "200651509-b2d4e44c77d481408ef6c9b2624e924c";
 var activity = pageActivity;
 
 function displayResults() {
@@ -18,6 +19,7 @@ function displayResults() {
     var maxResults = $(".trailRange").val();
     var maxDistance = $(".mileRange").val();
 
+
     if (activity !== 'camping') {
       var qualityRadio = document.getElementById("qualityInput");
       var qualityParm;
@@ -28,15 +30,15 @@ function displayResults() {
 
     if (activity === 'hiking') {
       queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon +
-        "&sort=" + qualityParm + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c";
+        "&sort=" + qualityParm + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=" + projectAPIKey;
     }
     else if (activity === 'biking') {
       queryURL = "https://www.mtbproject.com/data/get-trails?lat=" + lat + "&lon=" + lon +
-        "&sort=" + qualityParm + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
+        "&sort=" + qualityParm + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=" + projectAPIKey;
     }
     else if (activity === 'camping') {
       queryURL = "https://www.hikingproject.com/data/get-campgrounds?lat=" + lat + "&lon=" + lon +
-        "&sort=distance&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
+        "&sort=distance&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=" + projectAPIKey;
     }
 
     $.ajax({
@@ -207,10 +209,101 @@ $("#searchSubmit").on("click", function (event) {
   displayResults();
 });
 
+function buildFavePage() {
+
+  var newCard; 
+
+  // load hiking faves 
+
+  var hikingSection = $("#trail-dump");
+  if (toDoFavorites.hiking.length === 0) {
+    hikingSection.append($("<p>No hiking favorites saved."));
+  }
+
+  else {
+
+    var hikingFaves = toDoFavorites.hiking.toString();
+    var hikingURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + hikingFaves +
+      "&key=" + projectAPIKey;
+    console.log(hikingURL); 
+    $.ajax({
+      url: hikingURL,
+      method: "GET"
+    }).then(function (response) {
+
+      // var hikingSection = $("#hike-dump");
+
+      for (var i = 0; i < response.trails.length; i++) {
+        newCard = makeCard(response.trails[i], 'hiking'); 
+        hikingSection.append(newCard);
+      }
+    })
+   }
+
+    // load biking faves 
+
+  var bikingSection = $("#bike-dump");
+  console.log("length of biking section: " + toDoFavorites.biking.length); 
+  if (toDoFavorites.biking.length === 0 ) {
+    bikingSection.append($("<p>").text("No biking favorites saved."));
+  }
+
+  else {
+
+    var bikingFaves = toDoFavorites.biking.toString();
+    var bikingURL = "https://www.mtbproject.com/data/get-trails-by-id?ids=" + bikingFaves +
+      "&key=" + projectAPIKey;
+    console.log(bikingURL); 
+    $.ajax({
+      url: bikingURL,
+      method: "GET"
+    }).then(function (response) {
+
+      // var bikingSection = $("#biking-dump");
+
+      for (var i = 0; i < response.trails.length; i++) {
+        newCard = makeCard(response.trails[i], 'biking'); 
+        bikingSection.append(newCard);
+      }
+    })
+   }
+
+   // load camping faves 
+
+   var campingSection = $("#camp-dump");
+   console.log("length of camping section: " + toDoFavorites.camping.length); 
+   if (toDoFavorites.camping.length === 0 ) {
+     campingSection.append($("<p>").text("No camping favorites saved."));
+   }
+ 
+   else {
+ 
+     var campingFaves = toDoFavorites.camping.toString();
+     var campingURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + campingFaves +
+       "&key=" + projectAPIKey;
+     console.log(campingURL); 
+     $.ajax({
+       url: campingURL,
+       method: "GET"
+     }).then(function (response) {
+ 
+       // var campingSection = $("#camping-dump");
+ 
+       for (var i = 0; i < response.campgrounds.length; i++) {
+         newCard = makeCard(response.campgrounds[i], 'camping'); 
+         campingSection.append(makeCard(newCard, 'camping'));
+       }
+     })
+    }
+}
+
 $(document).ready(function () {
   $('.sidenav').sidenav();
   $(".dropdown-trigger").dropdown();
   getStoredFavorites();
+  if (pageActivity === 'favorites') {
+    buildFavePage();
+  }
 
 });
 

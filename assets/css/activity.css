@@ -1,4 +1,7 @@
-
+h3 {
+      text-align: center;
+      padding: 4rem; 
+}
 
  #trail-dump, #camp-dump, #bike-dump, #result-dump {
     display: flex;
@@ -54,7 +57,7 @@
    background-position: center;
  }
 
- .favoritesPage {
+ .favoritesContainer{
     padding: 100px 50px 200px 50px;
     width: 100%;
    background-image: url("../images/carvedTree.jpg");

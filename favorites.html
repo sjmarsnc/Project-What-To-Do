@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hiking</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css" media="screen,projection" />
+    <link href="./assets/css/activity.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper white lighten-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="black-text" href="camping.html">Camping</a></li>
+                <li><a class="black-text" href="biking.html">Biking</a></li>
+                <li><a class="black-text" href="hiking.html">Hiking</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="active dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a class="black-text" href="camping.html">Camping</a></li>
+        <li><a class="black-text" href="biking.html">Biking</a></li>
+        <li class="active"><a class="black-text" href="hiking.html">Hiking</a></li>
+        <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
+    </ul>
+
+    <div class="container favoritesContainer">
+        <div class="row">
+            <form class="col s12">
+                <div class="row valign-wrapper">
+
+                    <div class="input-field col s8 offset-s2 favoritesPage">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <h3>Hiking Favorites</h3>
+        <div class="col s12" id="trail-dump">
+            <!-- trail results get dumped here -->
+
+        </div>
+        <h3>Biking Favorites</h3>
+        <div class="col s12" id="bike-dump">
+            <!-- trail results get dumped here -->
+
+        </div>
+        <h3>Camping Favorites</h3>
+        <div class="col s12" id="camp-dump">
+
+        </div>
+    </div>
+
+    <script>
+        // how to put content in the page 
+        var pageActivity = 'favorites';  
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./assets/js/activity.js"></script>
+
+</body>
+
+</html>
