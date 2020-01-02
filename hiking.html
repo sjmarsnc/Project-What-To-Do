@@ -2,91 +2,136 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hiking</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css" media="screen,projection" />
-  <link href="./assets/css/activity.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hiking</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous"
+  />
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
+      <link href="./assets/css/activity.css" rel="stylesheet">
+      <link rel="stylesheet" href="./assets/css/style.css">
+     <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 </head>
 
 <body>
-
+    <div class="row hide-on-med-and-down" id="banner">
+        <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
+        <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
+        <div id="weather" class="accent-2 white-text col s8 m3">
+            <div>
+  
+                <span id="temperature">Temperature</span>
+                <br>
+                <span id="wind">Wind Speed</span>
+                <br>
+                <span id="humidity">Humidity</span>
+                <br>
+                <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
+            </div>
+        </div>
+        <div id="weatherToggle" class="accent-2 white-text col s4 m1">
+            <label>Change Your Units!</label>
+            <div class="switch"><label>Metric<input type="checkbox" checked>
+                    <span class="lever"></span>Imperial</label></div>
+        </div>
+    </div>      
   <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
-  </ul>
-  <nav>
-    <div class="nav-wrapper white lighten-1">
-      &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="black-text" href="camping.html">Camping</a></li>
-        <li><a class="black-text" href="biking.html">Biking</a></li>
-        <li class="active"><a class="black-text" href="hiking.html">Hiking</a></li>
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i
-              class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-    </div>
-  </nav>
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+      <div class="nav-wrapper white lighten-1">
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+             <i class="material-icons" style="color: black;">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="black-text" href="./camping.html">Camping</a></li>
+          <li><a class="black-text" href="./biking.html">Biking</a></li>
+          <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li> 
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a class="black-text" href="camping.html">Camping</a></li>
-    <li><a class="black-text" href="biking.html">Biking</a></li>
-    <li class="active"><a class="black-text" href="hiking.html">Hiking</a></li>
-    <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
-  </ul>
-
+    <ul class="sidenav" id="mobile-demo">
+      <li><a class="black-text" href="./camping.html">Camping</a></li>
+      <li><a class="black-text" href="./biking.html">Biking</a></li>
+      <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
+      <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
+    </ul>
+   
   <div class="container formHikingContainer">
-    <div class="row">
-      <form class="col s12">
-        <div class="row valign-wrapper">
+        <div class="row">
+                <form class="col s12">
+                  <div class="row valign-wrapper">
+                      
+                    <div class="input-field col s8 offset-s2 hikingForm">
+                      <!-- The Modal -->
+                      <div id="myModal" class="modal">
 
-          <div class="input-field col s8 offset-s2 hikingForm">
+                          <!-- Modal content -->
+                          <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Please enter a city name.</p>
+                          </div>
+                        
+                        </div>
+                       
+                      <input id="input_text" class="cityInput white-text" type="text" >
+                      <label for="input_text" class="white-text">City</label>
+                      <form action="#">
+                            <p class="range-field">
+                                <label for="mileRange" class="white-text">Mile Radius</label>
+                              <input type="range" id="test5"  class="mileRange" min="0" max="200" />
+                            </p>
+                            <p class="range-field">
+                                <label for="trailRange" class="white-text">Number of Search Results</label>
+                              <input type="range" id="test5" class="trailRange"  min="0" max="500" />
+                            </p>
+                            <p class="white-text"> Sort By: 
+                                <label>
+                                  <input class="with-gap" name="group1" id="qualityInput" type="radio" checked />
+                                  <span class="white-text">Quality</span>
+                                </label>
+                              
+                                <label>
+                                  <input class="with-gap" name="group1" type="radio" />
+                                  <span class="white-text">Distance</span>
+                                </label>
+                              </p>
+                          </form>
+                          <a class="waves-effect waves-light btn-large" id="hikingSubmit">Search</a>
+                          
+                    </div>
+                  </div>
+                </form>
+        </div> 
+    </div>
+        <div class="row">
+            <div class="col s12" id="trail-dump">
+                     <!-- trail results get dumped here -->
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-              <!-- Modal content -->
-              <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Please enter a city name.</p>
-              </div>
 
             </div>
   
-            <input id="input_text" class="cityInput white-text" type="text">
-            <label for="input_text" class="white-text">City</label>
-            <form action="#">
-              <p class="range-field">
-                <label for="mileRange" class="white-text">Mile Radius</label>
-                <input type="range" id="test5" class="mileRange" min="0" max="200" />
-              </p>
-              <p class="range-field">
-                <label for="trailRange" class="white-text">Number of Search Results</label>
-                <input type="range" id="test5" class="trailRange" min="0" max="500" />
-              </p>
-              <p class="white-text"> Sort By:
-                <label>
-                  <input class="with-gap" name="group1" id="qualityInput" type="radio" checked />
-                  <span class="white-text">Quality</span>
-                </label>
-
-                <label>
-                  <input class="with-gap" name="group1" type="radio" />
-                  <span class="white-text">Distance</span>
-                </label>
-              </p>
-            </form>
-            <a class="waves-effect waves-light btn-large" id="searchSubmit">Search</a>
+        
 
           </div>
         </div>
@@ -97,13 +142,7 @@
   <div class="row">
     <div class="col s12" id="result-dump">
       <!-- trail results get dumped here -->
-      <!-- <div class="trailDiv" data-id="7024662" data-url="https://www.hikingproject.com/trail/7024662/bond-park-lake-loop">
-        <h4>Bond Park Lake Loop </h4>
-        <img src="https://cdn-files.apstatic.com/hike/7028067_small_1554917523.jpg"> 
-        <p class="location">Morrisville, North Carolina</p>
-        <p> Description yada, yada, yada </p>
-        <i onclick="faveClick('7024662','hiking');" class="btn wave-effect waves-teal btn-flat faveBtn">Fave</i>
-      </div> -->
+  
     </div>
   </div>
   <script>
@@ -115,6 +154,7 @@
   <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
   <script type="text/javascript" src="./assets/js/activity.js"></script>
 
+    <script type="text/javascript" src="./assets/js/whattodo.js"></script>
 </body>
 
 </html>

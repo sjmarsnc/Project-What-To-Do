@@ -34,3 +34,7 @@ img {
 label {
     color: white !important; 
 }
+
+.nav a, .material-icons{
+    color: black !important; 
+}
