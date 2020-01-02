@@ -23,7 +23,8 @@ h3 {
 
  .cardDiv:hover {
      border: solid black 1px;
-     background-color: rgba(55, 190, 172, 1)
+     background-color: rgba(55, 190, 172, 1);
+     cursor: pointer; 
  }
 
  a {
