@@ -21,7 +21,7 @@ h3 {
      background-color: rgba(55, 190, 172, 0.87)
  }
 
- #divLink:hover {
+ .cardDiv:hover {
      border: solid black 1px;
      background-color: rgba(55, 190, 172, 1)
  }
