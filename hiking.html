@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +19,9 @@
       <link rel="stylesheet" href="./assets/css/style.css">
      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      
+  
 </head>
+
 <body>
     <div class="row hide-on-med-and-down" id="banner">
         <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
@@ -126,108 +128,33 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
 
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
- 
 
-function displayHikingInfo() {
-    $("#trail-dump").empty();
-
-var city = $(".cityInput").val().trim();
-
-if (city === '') {
-  // Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-modal.style.display = "block";
-span.onclick = function() {
-  modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-}
-
-var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
-
- // calling weather api to get lon and lat for hiking call
- $.ajax({
-   url: queryURL,
-   method: "GET"
- }).then(function(response) {
-var lat = response.coord.lat;
-var lon = response.coord.lon;
-var maxResults = $(".trailRange").val();
-var maxDistance = $(".mileRange").val();
-var qualityRadio = document.getElementById("qualityInput");
-
-if (qualityRadio.checked) {
-var queryhiking = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&sort=quality&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
- } else {
-  var queryhiking = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&sort=distance&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
- }
-$.ajax({
-  url: queryhiking,
-  method: "GET"
-}).then(function(response) {
+            </div>
   
+        
 
-    for(var j = 0; j < response.trails.length; j++) {
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br> 
+  <div class="row">
+    <div class="col s12" id="result-dump">
+      <!-- trail results get dumped here -->
+  
+    </div>
+  </div>
+  <script>
 
-var trail = $("<div id='trailDiv' data-id='" + response.trails[j].id + "' data-url='" + 
-                 response.trails[j].url + "'>");
-var trailName = response.trails[j].name;
-var trailHeading = $("<h4>").text(trailName);
-trail.append(trailHeading);
+    var pageActivity = "hiking";
 
-var hikingImg = $("<p><img src=" + response.trails[j].imgSmall + "></p>");
-trail.append(hikingImg);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./assets/js/activity.js"></script>
 
-var hikingLocation = $("<p class='location'>").text(response.trails[j].location);
-trail.append(hikingLocation);
-
-var hikingSummary = response.trails[j].summary;
-var hikingSummaryP = $("<p>").text(hikingSummary);
-trail.append(hikingSummaryP);
-
- var hikingLink = response.trails[j].url;
- var hikingLinkP = $("<a id='divLink' target='_blank' href=" + hikingLink + ">").append(trail);
-
-
-//  favoriteAdd = $("<div class='switch'><br><label class='white-text'>Favorite<input type='checkbox'><span class='lever'></span></label></div>");
-//  trail.append(favoriteAdd);
-
-//  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
-//  trail.append(addFav);
-
- $("#trail-dump").append(hikingLinkP);
- $(".cityInput").val("");
-    }
-
-});
-
- });
-};
-
-$("#hikingSubmit").on("click", function(event) {
-        event.preventDefault();
-        displayHikingInfo();
-});
-
-$( document ).ready(function() {$(".dropdown-trigger").dropdown()});
-        </script>
-     <!--JavaScript at end of body for optimized loading-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./assets/js/materialize.js"></script>
     <script type="text/javascript" src="./assets/js/whattodo.js"></script>
 </body>
+
 </html>

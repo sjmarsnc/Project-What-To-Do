@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -18,8 +20,8 @@
       <link rel="stylesheet" href="./assets/css/style.css">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      
 </head>
+
 <body>
   <div class="row hide-on-med-and-down" id="banner">
       <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
@@ -107,108 +109,26 @@
                 </form>
         </div> 
     </div>
-        <div class="row">
-            <div class="col s12" id="camp-dump">
-                     <!-- camp results get dumped here -->
-            </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
+        
+  <div class="row">
+    <div class="col s12" id="result-dump">
+      <!-- camp results get dumped here -->
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-function displayCampingInfo() {
-    $("#camp-dump").empty();
-
-var city = $(".cityInput").val().trim();
-
-if (city === '') {
-  // Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-modal.style.display = "block";
-span.onclick = function() {
-  modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-}
-
-var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
- 
- // calling weather api to get lon and lat for hiking call
- $.ajax({
-   url: queryURL,
-   method: "GET"
- }).then(function(response) {
-var lat = response.coord.lat;
-var lon = response.coord.lon;
-var maxResults = $(".campRange").val();
-var maxDistance = $(".mileRange").val();
-
-var queryCamp = "https://www.hikingproject.com/data/get-campgrounds?lat=" + lat + "&lon=" + lon + "&sort=distance&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
-
-$.ajax({
-  url: queryCamp,
-  method: "GET"
-}).then(function(response) {
+  <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+  <script>
     
-
-    for(var j = 0; j < response.campgrounds.length; j++) {
-
-
-var camp = $("<div id='campDiv' data-id='" + response.campgrounds[j].id + "' data-url='" + 
-                 response.campgrounds[j].url + "'>");
-
-var campName = response.campgrounds[j].name;
-var campHeading = $("<h4>").text(campName);
-camp.append(campHeading);
-
-var campLocation = $("<p class='location'>").text(response.campgrounds[j].location);
-camp.append(campLocation);
-
-var hikingSummary = response.campgrounds[j].summary;
-var hikingSummaryP = $("<p>").text(hikingSummary);
-camp.append(hikingSummaryP);
-
-
- var campLink = response.campgrounds[j].url;
- var campLinkP = $("<a id='divLink' target='_blank' href=" + campLink + ">").append(camp);
- 
-
-
-
-
-//  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
-//  camp.append(addFav);
-
- $("#camp-dump").append(campLinkP);
- $(".cityInput").val("");
-    }
-
-});
-
- });
-};
-
-$("#campSubmit").on("click", function(event) {
-        event.preventDefault();
-        displayCampingInfo();
-});
-
-$( document ).ready(function() {$(".dropdown-trigger").dropdown()});
-        </script>
+    var pageActivity = "camping";
+    
+  </script>
+  <script type="text/javascript" src="./assets/js/activity.js"></script>
      <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/materialize.js"></script>
     <script type="text/javascript" src="./assets/js/whattodo.js"></script>
+
 </body>
+
 </html>

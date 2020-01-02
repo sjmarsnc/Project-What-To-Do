@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Biking</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-    crossorigin="anonymous"
-  />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="./assets/css/materialize.min.css"  media="screen,projection"/>
       <link href="./assets/css/activity.css" rel="stylesheet">
-
       <link rel="stylesheet" href="./assets/css/style.css">
      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     
 </head>
+
 <body>
   <div class="row hide-on-med-and-down" id="banner">
     <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
     <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
     <div id="weather" class="accent-2 white-text col s8 m3">
         <div>
-
             <span id="temperature">Temperature</span>
             <br>
             <span id="wind">Wind Speed</span>
@@ -62,7 +57,6 @@
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
               </ul>
-
             </div>
           </nav>
               
@@ -87,150 +81,57 @@
                           <div class="modal-content">
                             <span class="close">&times;</span>
                             <p>Please enter a city name.</p>
-                          </div>
-                        
                         </div>
-                       
-                      <input id="input_text" class="cityInput white-text" type="text">
-                      <label for="input_text" class="white-text">Enter a City Name Here</label>
-                      <form action="#">
-                            <p class="range-field">
-                                <label for="mileRange" class="white-text">Mile Radius</label>
-                              <input type="range" id="test5"  class="mileRange" min="0" max="200" />
-                            </p>
-                            <p class="range-field">
-                                <label for="bikeRange" class="white-text">Number of Search Results</label>
-                              <input type="range" id="test5" class="bikeRange"  min="0" max="500" />
-                            </p>
-                            <p class="white-text"> Sort By: 
-                                    <label>
-                                      <input class="with-gap" name="group1" id="qualityInput" type="radio" checked />
-                                      <span class="white-text">Quality</span>
-                                    </label>
-                                  
-                                    <label>
-                                      <input class="with-gap" name="group1" type="radio" />
-                                      <span class="white-text">Distance</span>
-                                    </label>
-                                  </p>
-                          </form>
-                          <a class="waves-effect waves-light btn-large" id="bikeSubmit">Search</a>
-                          
-                    </div>
-                  </div>
-                </form>
-        </div> 
-    </div>
-        <div class="row">
-            <div class="col s12" id="bike-dump">
-                     <!-- bike results get dumped here -->
-            </div>
+                      </div>
+                     
+            <input id="input_text" class="cityInput white-text" type="text">
+            <label for="input_text" class="white-text">City</label>
+            <form action="#">
+              <p class="range-field">
+                <label for="mileRange" class="white-text">Mile Radius</label>
+                <input type="range" id="test5" class="mileRange" min="0" max="200" />
+              </p>
+              <p class="range-field">
+                <label for="trailRange" class="white-text">Number of Search Results</label>
+                <input type="range" id="test5" class="trailRange" min="0" max="500" />
+              </p>
+              <p class="white-text"> Sort By:
+                <label>
+                  <input class="with-gap" name="group1" id="qualityInput" type="radio" checked />
+                  <span class="white-text">Quality</span>
+                </label>
+
+                <label>
+                  <input class="with-gap" name="group1" type="radio" />
+                  <span class="white-text">Distance</span>
+                </label>
+              </p>
+            </form>
+            <a class="waves-effect waves-light btn-large" id="searchSubmit">Search</a>
+
+          </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12" id="result-dump">
+      <!-- results get dumped here -->
+    </div>
+  </div>
+  <script>
 
+    var pageActivity = "biking";
 
-function displayBikingInfo() {
-    $("#bike-dump").empty();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-var city = $(".cityInput").val().trim();
-
-if (city === '') {
-  // Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-modal.style.display = "block";
-span.onclick = function() {
-  modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-}
-
-
-var weatherAPIKey = "1e2baac35502ada6a2f1228a812729b7";
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAPIKey;
- 
- // calling weather api to get lon and lat for biking call
- $.ajax({
-   url: queryURL,
-   method: "GET"
- }).then(function(response) {
-var lat = response.coord.lat;
-var lon = response.coord.lon;
-var maxResults = $(".bikeRange").val();
-var maxDistance = $(".mileRange").val();
-var qualityRadio = document.getElementById("qualityInput");
-
-if (qualityRadio.checked) {
-var queryBike = "https://www.mtbproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&sort=quality&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
- } else {
-  var queryBike = "https://www.mtbproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&sort=distance&maxDistance="+ maxDistance +"&maxResults=" + maxResults + "&key=200651509-b2d4e44c77d481408ef6c9b2624e924c"
- }
-
-$.ajax({
-  url: queryBike,
-  method: "GET"
-}).then(function(response) {
-    
-
-    for(var j = 0; j < response.trails.length; j++) {
-
-
-var bike = $("<div id='bikeDiv' data-id='" + response.trails[j].id + "' data-url='" + 
-                 response.trails[j].url + "'>");
-
-var bikeName = response.trails[j].name;
-var bikeHeading = $("<h4>").text(bikeName);
-bike.append(bikeHeading);
-
-
-var bikingImg = $("<p><img src=" + response.trails[j].imgSmall + "></p>");
-bike.append(bikingImg);
-
-
-var bikeLocation = $("<p class='location'>").text(response.trails[j].location);
-bike.append(bikeLocation);
-
-var bikingSummary = response.trails[j].summary;
-var bikingSummaryP = $("<p>").text(bikingSummary);
-bike.append(bikingSummaryP);
-
-
- var bikeLink = response.trails[j].url;
- var bikeLinkP = $("<a id='divLink' target='_blank' href=" + bikeLink + ">").append(bike);
-
-
-//  var addFav = $("<p class='add-favorite'>Add to Favorites! <i class='far fa-star'></i></p>");
-//  bike.append(addFav);
-
- $("#bike-dump").append(bikeLinkP);
- $(".cityInput").val("");
-    }
-
-});
-
- });
-};
-
-$("#bikeSubmit").on("click", function(event) {
-        event.preventDefault();
-        displayBikingInfo();
-});
-
-$( document ).ready(function() {$(".dropdown-trigger").dropdown()});     
-        </script>
+  <script type="text/javascript" src="./assets/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./assets/js/activity.js"></script>
         <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/materialize.js"></script>
     <script type="text/javascript" src="./assets/js/whattodo.js"></script>
 </body>
+
 </html>
