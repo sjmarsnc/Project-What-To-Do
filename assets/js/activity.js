@@ -3,6 +3,7 @@ var activity = pageActivity;
 
 function displayResults() {
   $("#result-dump").empty();
+  $("#weather-dump").empty();
 
   var city = $(".cityInput").val().trim();
 
@@ -37,8 +38,32 @@ function displayResults() {
     var lon = response.coord.lon;
     var maxResults = $(".trailRange").val();
     var maxDistance = $(".mileRange").val();
+    //testing
 
+//============== forcast day 0 =============================
 
+//forcast 0 title
+var forcast0 = $("<div id='forcastDiv'>")
+var day0 = moment().add(0, 'days').format("l");
+var date0 = $("<h4>").text(day0);
+forcast0.append(date0);
+//forcast0 icon
+var iconCode = response.weather[0].icon; 
+var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+var forcastIcon0 =$("<p> <img src=" + iconURL + "></p>");
+forcast0.append(forcastIcon0);
+//forcast0 temperature
+var temp0 = ((response.main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp0 = $("<p>").text("Temp: " + temp0 + " °F");
+forcast0.append(forcastTemp0);
+//forcast0 humidity
+var humidity0 = response.main.humidity;
+var forcastHumidity0 = $("<p>").text("Humidity: " + humidity0 + "%");
+forcast0.append(forcastHumidity0);
+//appending forcast0 to div
+$("#weather-dump").append(forcast0);
+
+    //testing
     if (activity !== 'camping') {
       var qualityRadio = document.getElementById("qualityInput");
       var qualityParm;
@@ -72,6 +97,130 @@ function displayResults() {
         buildResults(response.trails);
       }
     });
+
+    //creating variables to get the 5 day forcast
+var countryCode = response.sys.country;
+console.log(countryCode);
+var queryForcast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "," + countryCode + "&appid=" + weatherAPIKey;
+$.ajax({
+  url: queryForcast,
+  method: "GET"
+}).then(function(response) {
+   var forcastArr = [];
+//getting 1 time slot of the 8 time slots per day, in the response.list, and putting it in the forcastArr     
+    for (var i = 0; i < response.list.length; i++) {
+     if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+   forcastArr.push(response.list[i]);
+    }
+}
+
+//==========================================================
+//            making forcast divs
+//==========================================================
+//============== forcast day 1 =============================
+
+//forcast 1 title
+var forcast1 = $("<div id='forcastDiv'>")
+var day1 = moment().add(1, 'days').format("l");
+var date1 = $("<h4>").text(day1);
+forcast1.append(date1);
+//forcast1 icon
+var forcastIconCode1 = forcastArr[0].weather[0].icon;
+var forcastIconURL1 = "https://openweathermap.org/img/wn/" + forcastIconCode1 + "@2x.png";
+var forcastIcon1 =$("<p> <img src=" + forcastIconURL1 + "></p>");
+forcast1.append(forcastIcon1);
+//forcast1 temperature
+var temp1 = ((forcastArr[0].main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp1 = $("<p>").text("Temp: " + temp1 + " °F");
+forcast1.append(forcastTemp1);
+//forcast1 humidity
+var humidity1 = forcastArr[0].main.humidity;
+var forcastHumidity1 = $("<p>").text("Humidity: " + humidity1 + "%");
+forcast1.append(forcastHumidity1);
+//appending forcast1 to div
+$("#weather-dump").append(forcast1);
+//=============== forcast day two ==========================
+var forcast2 = $("<div id='forcastDiv' class='bg-primary'>")
+var day2 = moment().add(2, 'days').format("l");
+var date2 = $("<h4>").text(day2);
+forcast2.append(date2);
+//forcast2 icon
+var forcastIconCode2 = forcastArr[1].weather[0].icon;
+var forcastIconURL2 = "https://openweathermap.org/img/wn/" + forcastIconCode2 + "@2x.png";
+var forcastIcon2 =$("<p> <img src=" + forcastIconURL2 + "></p>");
+forcast2.append(forcastIcon2);
+//forcast2 temperature
+var temp2 = ((forcastArr[1].main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp2 = $("<p>").text("Temp: " + temp2 + " °F");
+forcast2.append(forcastTemp2);
+//forcast2 humidity
+var humidity2 = forcastArr[1].main.humidity;
+var forcastHumidity2 = $("<p>").text("Humidity: " + humidity2 + "%");
+forcast2.append(forcastHumidity2);
+//appending forcast2 to div
+$("#weather-dump").append(forcast2);
+//=============== forcast day three ==========================
+var forcast3 = $("<div id='forcastDiv' class='bg-primary'>")
+var day3 = moment().add(3, 'days').format("l");
+var date3 = $("<h4>").text(day3);
+forcast3.append(date3);
+//forcast3 icon
+var forcastIconCode3 = forcastArr[2].weather[0].icon;
+var forcastIconURL3 = "https://openweathermap.org/img/wn/" + forcastIconCode3 + "@2x.png";
+var forcastIcon3 =$("<p> <img src=" + forcastIconURL3 + "></p>");
+forcast3.append(forcastIcon3);
+//forcast3 temperature
+var temp3 = ((forcastArr[2].main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp3 = $("<p>").text("Temp: " + temp3 + " °F");
+forcast3.append(forcastTemp3);
+//forcast3 humidity
+var humidity3 = forcastArr[2].main.humidity;
+var forcastHumidity3 = $("<p>").text("Humidity: " + humidity3 + "%");
+forcast3.append(forcastHumidity3);
+//appending forcast3 to div
+$("#weather-dump").append(forcast3);
+//=============== forcast day four ==========================
+var forcast4 = $("<div id='forcastDiv' class='bg-primary'>")
+var day4 = moment().add(4, 'days').format("l");
+var date4 = $("<h4>").text(day4);
+forcast4.append(date4);
+//forcast4 icon
+var forcastIconCode4 = forcastArr[3].weather[0].icon;
+var forcastIconURL4 = "https://openweathermap.org/img/wn/" + forcastIconCode4 + "@2x.png";
+var forcastIcon4 =$("<p> <img src=" + forcastIconURL4 + "></p>");
+forcast4.append(forcastIcon4);
+//forcast4 temperature
+var temp4 = ((forcastArr[3].main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp4 = $("<p>").text("Temp: " + temp4 + " °F");
+forcast4.append(forcastTemp4);
+//forcast4 humidity
+var humidity4 = forcastArr[3].main.humidity;
+var forcastHumidity4 = $("<p>").text("Humidity: " + humidity4 + "%");
+forcast4.append(forcastHumidity4);
+//appending forcast4 to div
+$("#weather-dump").append(forcast4);
+//=============== forcast day five ==========================
+var forcast5 = $("<div id='forcastDiv' class='bg-primary'>")
+var day5 = moment().add(5, 'days').format("l");
+var date5 = $("<h4>").text(day5);
+forcast5.append(date5);
+//forcast5 icon
+var forcastIconCode5 = forcastArr[4].weather[0].icon;
+var forcastIconURL5 = "https://openweathermap.org/img/wn/" + forcastIconCode5 + "@2x.png";
+var forcastIcon5 =$("<p> <img src=" + forcastIconURL5 + "></p>");
+forcast5.append(forcastIcon5);
+//forcast5 temperature
+var temp5 = ((forcastArr[4].main.temp - 273.15) * 1.8 + 32).toFixed(1);
+var forcastTemp5 = $("<p>").text("Temp: " + temp5 + " °F");
+forcast5.append(forcastTemp5);
+//forcast5 humidity
+var humidity5 = forcastArr[4].main.humidity;
+var forcastHumidity5 = $("<p>").text("Humidity: " + humidity5 + "%");
+forcast5.append(forcastHumidity5);
+//appending forcast5 to div
+$("#weather-dump").append(forcast5);
+
+ });
 
   });
 }

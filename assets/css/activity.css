@@ -21,15 +21,34 @@ h3 {
      background-color: rgba(55, 190, 172, 0.87)
  }
 
- #divLink:hover {
+ .cardDiv:hover {
      border: solid black 1px;
-     background-color: rgba(55, 190, 172, 1)
+     background-color: rgba(55, 190, 172, 1);
+     cursor: pointer;
+     
  }
 
  a {
      text-decoration: none;
     color: black;
     
+ }
+
+ #weather-dump {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: lightgray; 
+  margin-top: 20px; 
+ }
+
+ #forcastDiv {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  
+  background-color: rgba(77, 213, 255, 0.993)
  }
 
  .campForm, .hikingForm, .bikeForm {

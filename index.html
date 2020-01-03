@@ -7,25 +7,50 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./assets/css/materialize.css" media="screen,projection" />
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="./assets/css/activity.css" rel="stylesheet">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+
+        <nav>
+                <div class="nav-wrapper teal lighten-2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo white-text">Trailz</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons" style="color: black;">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="white-text" href="./camping.html">Camping</a></li>
+                        <li><a class="white-text" href="./biking.html">Biking</a></li>
+                        <li><a class="white-text" href="./hiking.html">Hiking</a></li> 
+                        <li class="active"><a class="white-text" href="#">Home</a></li>
+                        <li><a class="white-text" href="./favorites.html">Favorites</a></li> 
+                    </ul>
+                </div>
+            </nav>
+            
+            <ul class="sidenav" id="mobile-demo">
+                <li><a class="black-text" href="./camping.html">Camping</a></li>
+                <li><a class="black-text" href="./biking.html">Biking</a></li>
+                <li><a class="black-text" href="./hiking.html">Hiking</a></li>  
+                <li class="active"><a class="black-text" href="./index.html">Home</a></li>
+                <li><a class="black-text" href="./favorites.html">Favorites</a></li>  
+                <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
+            </ul>
+
     <div class="row" id="banner" >
-        <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
+        <div class="col s12 m8" id="skyline"><p>Find the best trails in any city!</p></div>
         <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
         <div id="weather" class="accent-2 white-text col s8 m3">
-            <div>
+            
 
-                <span id="temperature">Temperature</span>
-                <br>
-                <span id="wind">Wind Speed</span>
-                <br>
-                <span id="humidity">Humidity</span>
-                <br>
-                <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
-            </div>
+                <h5>Raleigh</h5>
+                <p><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></p>           
+                <p id="temperature">Temperature</p>
+                <p id="wind">Wind Speed</p>
+                <p id="humidity">Humidity</p>
+            
         </div>
         <div id="weatherToggle" class="accent-2 white-text col s4 m1">
             <label>Change Your Units!</label>
@@ -34,33 +59,31 @@
         </div>
     </div>
 
-    <!-- <div class="row"> 
-           <div class = "col s6">
-               <form>
-                   <h5>What days will you be in town?</h5>
-                   <label>Starting date:</label><input type="date" class="datepicker">
-                   <label>Ending date:</label>&nbsp;<input type="date" class="datepicker">
-               </form>
-           </div>
-       </div> -->
+   
 
     <div class="row">
 
         <div class="col s6 m4">
             <div class="card hoverable activity-card" data-url="camping.html">
                 <div class="card-image">
-                    <img class="responsive-image" src="./assets/images/camping.jpg">
+                    <img class="responsive-image" src="./assets/images/activity-adult-adventure-backpacking-344100.jpg">
                     <span class="card-title white-text">Camping</span>
                 </div>
+                <div class="card-content">
+                        <p>Camping is a good way to slow down and enjoy the company of friends and family.</p>
+                      </div>
             </div>
 
         </div>
         <div class="col s6 m4">
             <div class="card hoverable activity-card" data-url="./biking.html">
                 <div class="card-image">
-                    <img class="responsive-image" src="./assets/images/greenway_biking.jpg">
-                    <span class="card-title white-text">Cycling</span>
+                    <img class="responsive-image" src="./assets/images/silhouette-photography-of-biker-on-top-of-hill-1619299.jpg">
+                    <span class="card-title white-text">Mountain Biking</span>
                 </div>
+                <div class="card-content">
+                        <p>Full-on mountain biking burns upwards of 600 calories an hour and builds muscles in your arms, back, chest, and core.</p>
+                      </div>
             </div>
 
         </div>
@@ -69,14 +92,17 @@
         <div class="col s6 m4">
             <div class="card hoverable activity-card" data-url="./hiking.html">
                 <div class="card-image">
-                    <img class="responsive-image" src="./assets/images/hiking.jpeg">
+                    <img class="responsive-image" src="./assets/images/accomplishment-action-adult-adventure-372098.jpg">
                     <span class="card-title white-text">Hiking</span>
                 </div>
+                <div class="card-content">
+                        <p>Studies show that people who hike are better than those who don't.</p>
+                      </div>
             </div>
 
         </div>
     </div>
-
+    <script type="text/javascript" src="./assets/js/activity.js"></script>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/materialize.js"></script>
