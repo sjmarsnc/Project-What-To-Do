@@ -39,6 +39,10 @@
     background-color: cornflowerblue;
 }
 
+#weatherSwitchTitle  {
+    font-weight: bolder;
+}
+
 img {
     image-orientation: from-image;
 }
