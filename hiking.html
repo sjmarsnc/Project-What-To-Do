@@ -19,59 +19,36 @@
       <link rel="stylesheet" href="./assets/css/style.css">
      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   
 </head>
 
 <body>
-    <div class="row hide-on-med-and-down" id="banner">
-        <div class="col s12 m8" id="skyline">What To Do Outdoors in Raleigh</div>
-        <!-- <img class = "col s8" src="./assets/images/raleighskyline_banner.jpg"> -->
-        <div id="weather" class="accent-2 white-text col s8 m3">
-            <div>
-  
-                <span id="temperature">Temperature</span>
-                <br>
-                <span id="wind">Wind Speed</span>
-                <br>
-                <span id="humidity">Humidity</span>
-                <br>
-                <span><img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png"></span>
-            </div>
-        </div>
-        <div id="weatherToggle" class="accent-2 white-text col s4 m1">
-            <label>Change Your Units!</label>
-            <div class="switch"><label>Metric<input type="checkbox" checked>
-                    <span class="lever"></span>Imperial</label></div>
-        </div>
-    </div>      
-  <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">one</a></li>
-      <li><a href="#!">two</a></li>
-      <li class="divider"></li>
-      <li><a href="#!">three</a></li>
-    </ul>
     <nav>
-      <div class="nav-wrapper white lighten-1">
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo black-text">Home</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-             <i class="material-icons" style="color: black;">menu</i>
-        </a>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="black-text" href="./camping.html">Camping</a></li>
-          <li><a class="black-text" href="./biking.html">Biking</a></li>
-          <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li> 
-          <!-- Dropdown Trigger -->
-          <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-      <li><a class="black-text" href="./camping.html">Camping</a></li>
-      <li><a class="black-text" href="./biking.html">Biking</a></li>
-      <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
-      <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
-    </ul>
+        <div class="nav-wrapper teal lighten-2">
+          &nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" class="brand-logo white-text">Trailz</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+               <i class="material-icons" style="color: black;">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="./camping.html">Camping</a></li>
+            <li><a class="white-text" href="./biking.html">Biking</a></li>
+            <li class="active"><a class="white-text" href="./hiking.html">Hiking</a></li> 
+            <li><a class="white-text" href="./index.html">Home</a></li>
+            <li><a class="white-text" href="./favorites.html">Favorites</a></li>
+          </ul>
+        </div>
+      </nav>
+  
+      <ul class="sidenav" id="mobile-demo">
+        <li><a class="black-text" href="./camping.html">Camping</a></li>
+        <li><a class="black-text" href="./biking.html">Biking</a></li>
+        <li class="active"><a class="black-text" href="./hiking.html">Hiking</a></li>  
+        <li><a class="black-text" href="./index.html">Home</a></li>
+        <li><a class="black-text" href="./favorites.html">Favorites</a></li>
+        <!-- <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Favorites<i class="material-icons right">arrow_drop_down</i></a></li> -->
+      </ul>
    
   <div class="container formHikingContainer">
         <div class="row">
@@ -121,7 +98,11 @@
         </div> 
     </div>
         
-  <br> 
+  <div class="row">
+      <div class="col s12" id="weather-dump">
+               <!-- weather results get dumped here -->
+      </div>
+  </div>
   <div class="row">
     <div class="col s12" id="result-dump">
       <!-- trail results get dumped here -->
