@@ -2,6 +2,7 @@
 Our first major class project
 
 ## User Story
+
 A visitor to Raleigh, or a resident who’s about to have an outdoorsy visitor, wants to find places to hike, bike, or camp in the area. At a glance on the homepage they can see the current weather and (provided it isn't inclemant) they can choose hiking, biking or camping. Clicking these links takes them to a new page where they can select their city - with a default of Raleigh, but maybe they want Durham or Chapel Hill or anywhere else. They can choose how many results they recieve and how far away they are willing to travel. The page will display some options of trails or campsites. The user can then utilize the favorite heart to add their favorite to the favorite page and save for later! (Note: favorites are saved in local storage so only accessible from that computer.)
 
 ## Screenshots
@@ -15,7 +16,6 @@ A visitor to Raleigh, or a resident who’s about to have an outdoorsy visitor, 
 ![image](https://user-images.githubusercontent.com/12642091/71767457-89ed4d00-2eda-11ea-9717-ac7ba3d9b9cf.png)
 
 ![image](https://user-images.githubusercontent.com/12642091/71767434-67f3ca80-2eda-11ea-8137-fd8d25d30cd9.png)
-
 
 ## Deployed Website Address
 
@@ -31,8 +31,9 @@ Pexels for stock images
 
 OpenWeather API <br>
 
-
 https://www.hikingproject.com/data 
+
+REI outdoor data <br> 
 
 ![image](https://user-images.githubusercontent.com/12642091/71767433-60ccbc80-2eda-11ea-9222-3f25ad1e095a.png)
 
@@ -59,4 +60,5 @@ Chris Van De Walker
 
 ## Acknowledgements
 
-Thankyou to Zack, Carl, Tim and Jon for help throughout the project, particularly with github.
+Thank you to Zack, Carl, Tim and Jon for help throughout the project, particularly with github.
+
