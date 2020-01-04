@@ -1,25 +1,46 @@
 #banner {
-    height: 10rem;  
+    height: 190px; 
 }
 
 #skyline {
     background-image: url("../images/raleighskyline_banner.jpg");
     font-size: xx-large;
     font-weight: bold; 
-    color: black; 
+    color: white; 
     vertical-align: center;
     text-align: center;
-    height: 100%;
+    height: 190px;
+}
+
+#skyline p {
+    color: white;
+    background-color:  rgba(63, 63, 63, 0.555);
+    border-radius: 10px;
+    margin-top: 0;
+    width: 100%;
 }
 
 #weather {
     height: 100%; 
     vertical-align: center; 
-    background-color: cornflowerblue;
+    background-color: cornflowerblue;   
+}
+
+#weather-icon {
+    margin: -30px auto -40px -10px;
+}
+
+#wind {
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 
 #weatherToggle {
     background-color: cornflowerblue;
+}
+
+#weatherSwitchTitle  {
+    font-weight: bolder;
 }
 
 img {
