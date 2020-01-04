@@ -89,7 +89,7 @@ $("#weather-dump").append(forcast0);
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       if (activity === 'camping') {
         buildResults(response.campgrounds);
       }
@@ -266,9 +266,13 @@ function makeCard(cardData, activityType) {
     result.append($("<p>Number of campsites: " + cardData.numCampsites + "</p>"));
   }
 
-  var faveBtn = $("<i>").attr("class", " wave-effect waves-teal  faveBtn");
+  var faveIcon = "favorite_border"; 
+  if (isFave( cardData.id.toString(), activityType) ) {
+     faveIcon = "favorite"; 
+  }
+  var faveBtn = $("<i class=' wave-effect waves-teal faveBtn material-icons' id='fav" 
+       + cardData.id + "'>" + faveIcon + "</i>");
   faveBtn.attr("onclick", "faveClick('" + cardData.id + "','" + activityType + "')");
-  faveBtn.text("Fave!");
   result.append(faveBtn);
 
   return result;
@@ -276,7 +280,6 @@ function makeCard(cardData, activityType) {
 
 function cardClick(detailURL) {
   // called when a card is clicked on 
-  console.log(detailURL);
   window.open(detailURL, "_blank");
 }
 
@@ -286,7 +289,6 @@ var toDoFavorites;
 function getStoredFavorites() {
 
   var storedFavesAsString = localStorage.getItem("toDoFavorites");
-  console.log(storedFavesAsString);
   if (storedFavesAsString === null) {
     toDoFavorites = {
       hiking: [],
@@ -297,7 +299,7 @@ function getStoredFavorites() {
   else {
     toDoFavorites = JSON.parse(storedFavesAsString);
   }
-  console.log(toDoFavorites);
+  // console.log(toDoFavorites);
 }
 
 function saveStoredFavorites() {
@@ -310,36 +312,41 @@ function faveClick(id, type) {
   // come here directly when click on Fave button or heart 
 
   event.stopPropagation();
-  console.log(type);
 
   if (type === "hiking") {
-    var isFave = toDoFavorites.hiking.indexOf(id);
-    if (isFave === -1) {
+    var faveIndex = toDoFavorites.hiking.indexOf(id);
+    if (faveIndex === -1) {
       toDoFavorites.hiking.push(id);
+      $("#fav"+id).text('favorite');
     }
     else {
       // already in array, need to take it out 
-      toDoFavorites.hiking.splice(isFave, 1);
+      toDoFavorites.hiking.splice(faveIndex, 1);
+      $("#fav"+id).text('favorite_border'); 
     }
   }
   else if (type === "biking") {
-    var isFave = toDoFavorites.biking.indexOf(id);
-    if (isFave === -1) {
+    var faveIndex = toDoFavorites.biking.indexOf(id);
+    if (faveIndex === -1) {
       toDoFavorites.biking.push(id);
+      $("#fav"+id).text('favorite');
     }
     else {
       // already in array, need to take it out 
-      toDoFavorites.biking.splice(isFave, 1);
+      toDoFavorites.biking.splice(faveIndex, 1);
+      $("#fav"+id).text('favorite_border');
     }
   }
   else if (type === "camping") {
-    var isFave = toDoFavorites.camping.indexOf(id);
-    if (isFave === -1) {
+    var faveIndex = toDoFavorites.camping.indexOf(id);
+    if (faveIndex === -1) {
       toDoFavorites.camping.push(id);
+      $("#fav"+id).text('favorite');
     }
     else {
       // already in array, need to take it out 
-      toDoFavorites.camping.splice(isFave, 1);
+      toDoFavorites.camping.splice(faveIndex, 1);
+      $("#fav"+id).text('favorite_border');
     }
   }
   saveStoredFavorites();
@@ -347,6 +354,7 @@ function faveClick(id, type) {
 
 function isFave(id, activityType) {
   // returns true or false for whether this id is a saved favorite
+ 
   if (activityType === 'hiking' && toDoFavorites.hiking.indexOf(id) > -1) {
     return true;
   }
@@ -393,7 +401,6 @@ function buildFavePage() {
     var hikingFaves = toDoFavorites.hiking.toString();
     var hikingURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + hikingFaves +
       "&key=" + projectAPIKey;
-    console.log(hikingURL); 
     $.ajax({
       url: hikingURL,
       method: "GET"
@@ -411,7 +418,6 @@ function buildFavePage() {
     // load biking faves 
 
   var bikingSection = $("#bike-dump");
-  console.log("length of biking section: " + toDoFavorites.biking.length); 
   if (toDoFavorites.biking.length === 0 ) {
     bikingSection.append($("<p>").text("No biking favorites saved."));
   }
@@ -421,7 +427,6 @@ function buildFavePage() {
     var bikingFaves = toDoFavorites.biking.toString();
     var bikingURL = "https://www.mtbproject.com/data/get-trails-by-id?ids=" + bikingFaves +
       "&key=" + projectAPIKey;
-    console.log(bikingURL); 
     $.ajax({
       url: bikingURL,
       method: "GET"
@@ -439,7 +444,6 @@ function buildFavePage() {
    // load camping faves 
 
    var campingSection = $("#camp-dump");
-   console.log("length of camping section: " + toDoFavorites.camping.length); 
    if (toDoFavorites.camping.length === 0 ) {
      campingSection.append($("<p>").text("No camping favorites saved."));
    }
@@ -449,19 +453,7 @@ function buildFavePage() {
      var campingFaves = toDoFavorites.camping.toString();
      var campingURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + campingFaves +
        "&key=" + projectAPIKey;
-     console.log(campingURL); 
-     $.ajax({
-       url: campingURL,
-       method: "GET"
-     }).then(function (response) {
- 
-       // var campingSection = $("#camping-dump");
- 
-       for (var i = 0; i < response.campgrounds.length; i++) {
-         newCard = makeCard(response.campgrounds[i], 'camping'); 
-         campingSection.append(makeCard(newCard, 'camping'));
-       }
-     })
+     // campgrounds cannot be requested by id 
     }
 }
 
