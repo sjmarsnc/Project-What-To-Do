@@ -6,7 +6,18 @@ A visitor to Raleigh, or a resident who’s about to have an outdoorsy visitor, 
 
 ## Screenshots
 
+![image](https://user-images.githubusercontent.com/12642091/71767433-60ccbc80-2eda-11ea-9222-3f25ad1e095a.png)
+![image](https://user-images.githubusercontent.com/12642091/71767434-67f3ca80-2eda-11ea-8137-fd8d25d30cd9.png)
+![image](https://user-images.githubusercontent.com/12642091/71767438-70e49c00-2eda-11ea-82f3-8d5e326c39e0.png)
+![image](https://user-images.githubusercontent.com/12642091/71767449-7d68f480-2eda-11ea-904c-0b870e9cd6d3.png)
+![image](https://user-images.githubusercontent.com/12642091/71767452-82c63f00-2eda-11ea-8057-2853a22ad1cc.png)
+![image](https://user-images.githubusercontent.com/12642091/71767457-89ed4d00-2eda-11ea-9717-ac7ba3d9b9cf.png)
+![image](https://user-images.githubusercontent.com/12642091/71767466-92458800-2eda-11ea-87c4-eb69bc216cef.png)
+![image](https://user-images.githubusercontent.com/12642091/71767539-2879ae00-2edb-11ea-97fc-a21795b53431.png)
+
 ## Deployed Website Address
+
+https://sjmarsnc.github.io/Project-What-To-Do/
 
 ## Technologies used
 
