@@ -56,6 +56,10 @@ label {
     color: white !important; 
 }
 
-.nav a, .material-icons{
+.nav a, .material-icons {
     color: black !important; 
+}
+
+#mobile-menu-sandwich { 
+     color: white !important; 
 }
